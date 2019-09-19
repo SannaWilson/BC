@@ -3,7 +3,7 @@ for details on configuring this project to bundle and minify static web assets. 
 body {
     padding-top: 50px;
     padding-bottom: 20px;
-    background-color: #c2e1e1;
+    background-color: #000000;
 }
 
 /* Wrapping element */
@@ -35,4 +35,28 @@ body {
     .carousel-caption {
         display: none;
     }
+}
+/*sivuston ulkonäön tuunausta*/
+p {
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #ffffff;
+}
+h1 {
+    font-family: 'MS Gothic', 'MS PGothic', 'Segoe UI';
+    color: #88e4df;
+}
+h2 {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #ffffff;
+}
+ol {
+    list-style: square;
+    color: #ffffff;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+a {
+    color: #c6f9f6;
 }

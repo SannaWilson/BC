@@ -17,14 +17,14 @@ namespace MVCdemo.Controllers
 
         public IActionResult About()
         {
-            ViewData["Message"] = "Your application description page.";
+            ViewData["Message"] = "Tällä sivualla ei vielä ole tarkoitusta";
 
             return View();
         }
 
         public IActionResult Contact()
         {
-            ViewData["Message"] = "Your contact page.";
+            ViewData["Message"] = "Sanna Wilson";
 
             return View();
         }
