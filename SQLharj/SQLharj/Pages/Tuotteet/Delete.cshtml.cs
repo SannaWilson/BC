@@ -20,20 +20,28 @@ namespace SQLharj.Pages.Tuotteet
 
         [BindProperty]
         public Tuote Tuote { get; set; }
+        public string ErrorMessage { get; set; }
 
-        public async Task<IActionResult> OnGetAsync(int? id)
+        public async Task<IActionResult> OnGetAsync(int? id, bool? saveChangesError = false)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            Tuote = await _context.Tuote.FirstOrDefaultAsync(m => m.ID == id);
+            Tuote = await _context.Tuote
+                .AsNoTracking()
+                .FirstOrDefaultAsync(m => m.ID == id);
 
             if (Tuote == null)
             {
                 return NotFound();
             }
+            if (saveChangesError.GetValueOrDefault())
+            {
+                ErrorMessage = "Delete failed. Try again";
+            }
+
             return Page();
         }
 
@@ -44,15 +52,26 @@ namespace SQLharj.Pages.Tuotteet
                 return NotFound();
             }
 
-            Tuote = await _context.Tuote.FindAsync(id);
+            var Tuote = await _context.Tuote
 
-            if (Tuote != null)
+                            .AsNoTracking()
+                            .FirstOrDefaultAsync(m => m.ID == id);
+
+            if (Tuote == null)
+            {
+                return NotFound();
+            }
+            try
             {
                 _context.Tuote.Remove(Tuote);
                 await _context.SaveChangesAsync();
+                return RedirectToPage("./Index");
             }
-
-            return RedirectToPage("./Index");
+            catch (DbUpdateException)
+            {
+                return RedirectToAction("./Delete",
+                                       new { id, saveChangesError = true });
+            }
         }
     }
 }
