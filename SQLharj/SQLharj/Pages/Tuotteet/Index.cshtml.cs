@@ -46,7 +46,9 @@ namespace SQLharj.Pages.Tuotteet
                 tuoteIQ = tuoteIQ.Where(s => s.LAAKENIMI.Contains(searchString));
             }
 
-            Tuote = await PaginatedList<Tuote>.CreateAsync(tuoteIQ.AsNoTracking(), pageIndex ?? 1);
+            int pageSize = 5;
+            Tuote = await PaginatedList<Tuote>.CreateAsync(
+                tuoteIQ.AsNoTracking(), pageIndex ?? 1, pageSize);
         }
         
 
