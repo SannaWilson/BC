@@ -32,10 +32,10 @@
                 </a>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Tuote[0].LAAKENIMI)
+                @Html.DisplayNameFor(model => model.Tuote[0].ATCKOODI)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Tuote[0].ATCKOODI)
+                @Html.DisplayNameFor(model => model.Tuote[0].MA_Date)
             </th>
             <th></th>
         </tr>
@@ -49,6 +49,9 @@
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.ATCKOODI)
+                </td>
+                <td>
+                    @Html.DisplayFor(ModelItem => item.MA_Date)
                 </td>
                 <td>
                     <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |

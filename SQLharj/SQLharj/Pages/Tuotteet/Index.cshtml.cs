@@ -18,7 +18,7 @@ namespace SQLharj.Pages.Tuotteet
             _context = context;
         }
 
-        public string LAAKENIMIFiltet { get; set; }
+        public string LAAKENIMIFilter { get; set; }
         public string CurrentFilter { get; set; }
         public string CurrentSort { get; set; }
 
