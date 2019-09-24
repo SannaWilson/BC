@@ -22,10 +22,21 @@ namespace SQLharj.Pages.Tuotteet
         public string CurrentFilter { get; set; }
         public string CurrentSort { get; set; }
 
-        public IList<Tuote> Tuote { get; set; }
+        public PaginatedList<Tuote> Tuote { get; set; }
 
-        public async Task OnGetAsync(string sortOrder, string searchString)
+        public async Task OnGetAsync(string sortOrder, string currentFilter, string searchString, int? pageIndex)
         {
+            CurrentSort = sortOrder;
+
+            if (searchString != null)
+            {
+                pageIndex = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+
             CurrentFilter = searchString;
 
             IQueryable<Tuote> tuoteIQ = from s in _context.Tuote
@@ -35,7 +46,7 @@ namespace SQLharj.Pages.Tuotteet
                 tuoteIQ = tuoteIQ.Where(s => s.LAAKENIMI.Contains(searchString));
             }
 
-            Tuote = await tuoteIQ.AsNoTracking().ToListAsync();
+            Tuote = await PaginatedList<Tuote>.CreateAsync(tuoteIQ.AsNoTracking(), pageIndex ?? 1);
         }
         
 

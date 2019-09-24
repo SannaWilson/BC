@@ -26,6 +26,12 @@
     <thead>
         <tr>
             <th>
+                <a asp-page="./Index" asp-route-sortOrder="@Model.CurrentSort"
+                   asp-route-currentFilter="@Model.CurrentFilter">
+                    @Html.DisplayNameFor(model => model.Tuote[0].LAAKENIMI)
+                </a>
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.Tuote[0].LAAKENIMI)
             </th>
             <th>
@@ -35,20 +41,41 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.Tuote) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.LAAKENIMI)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ATCKOODI)
-            </td>
-            <td>
-                <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.ID">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model.Tuote)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LAAKENIMI)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ATCKOODI)
+                </td>
+                <td>
+                    <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
+                    <a asp-page="./Details" asp-route-id="@item.ID">Details</a> |
+                    <a asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
+
+@{
+    var prevDisabled = !Model.Tuote.HasPreviousPage ? "disabled" : "";
+    var nextDisabled = !Model.Tuote.HasNextPage ? "disabled" : "";
+}
+
+<a asp-page="./Index"
+   asp-route-sortOrder="@Model.CurrentSort"
+   asp-route-pageIndex="@(Model.Tuote.PageIndex - 1)"
+   asp-route-currentFilter="@Model.CurrentFilter"
+   class="btn btn-default @prevDisabled">
+    Previous
+</a>
+<a asp-page="./Index"
+   asp-route-sortOrder="@Model.CurrentSort"
+   asp-route-pageIndex="@(Model.Tuote.PageIndex + 1)"
+   asp-route-currentFilter="@Model.CurrentFilter"
+   class="btn btn-default @nextDisabled">
+    Next
+</a>
