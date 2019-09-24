@@ -18,11 +18,26 @@ namespace SQLharj.Pages.Tuotteet
             _context = context;
         }
 
-        public IList<Tuote> Tuote { get;set; }
+        public string LAAKENIMIFiltet { get; set; }
+        public string CurrentFilter { get; set; }
+        public string CurrentSort { get; set; }
 
-        public async Task OnGetAsync()
+        public IList<Tuote> Tuote { get; set; }
+
+        public async Task OnGetAsync(string sortOrder, string searchString)
         {
-            Tuote = await _context.Tuote.ToListAsync();
+            CurrentFilter = searchString;
+
+            IQueryable<Tuote> tuoteIQ = from s in _context.Tuote
+                                        select s;
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                tuoteIQ = tuoteIQ.Where(s => s.LAAKENIMI.Contains(searchString));
+            }
+
+            Tuote = await tuoteIQ.AsNoTracking().ToListAsync();
         }
+        
+
     }
 }
