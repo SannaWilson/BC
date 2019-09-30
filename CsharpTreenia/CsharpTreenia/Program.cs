@@ -6,9 +6,17 @@ namespace CsharpTreenia
     {
         static void Main(string[] args)
         {
+            /* Tehdään peli, joka kehittyy vaiheittain:
+             * 1) Lisätään ajanotto olemassa olevaan harjoitukseen
+            */
+                
             Console.WriteLine("Hei, mikä on nimesi?");
+            DateTime alku = DateTime.Now;
             String nimi = Console.ReadLine();
-            Console.WriteLine("Hei, " + nimi " !");
+            DateTime loppu = DateTime.Now;
+            Console.WriteLine("Hei, " + nimi, " !");
+            TimeSpan aika = loppu - alku;
+            Console.WriteLine("Vastausaikasi oli: " + aika);
         }
     }
 }
