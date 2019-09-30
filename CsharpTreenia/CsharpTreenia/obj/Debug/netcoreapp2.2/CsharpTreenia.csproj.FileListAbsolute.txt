@@ -1,0 +1,11 @@
+C:\Users\tmthw\Desktop\Bootcamp\WebGit\BC\CsharpTreenia\CsharpTreenia\bin\Debug\netcoreapp2.2\CsharpTreenia.deps.json
+C:\Users\tmthw\Desktop\Bootcamp\WebGit\BC\CsharpTreenia\CsharpTreenia\bin\Debug\netcoreapp2.2\CsharpTreenia.runtimeconfig.json
+C:\Users\tmthw\Desktop\Bootcamp\WebGit\BC\CsharpTreenia\CsharpTreenia\bin\Debug\netcoreapp2.2\CsharpTreenia.runtimeconfig.dev.json
+C:\Users\tmthw\Desktop\Bootcamp\WebGit\BC\CsharpTreenia\CsharpTreenia\bin\Debug\netcoreapp2.2\CsharpTreenia.dll
+C:\Users\tmthw\Desktop\Bootcamp\WebGit\BC\CsharpTreenia\CsharpTreenia\bin\Debug\netcoreapp2.2\CsharpTreenia.pdb
+C:\Users\tmthw\Desktop\Bootcamp\WebGit\BC\CsharpTreenia\CsharpTreenia\obj\Debug\netcoreapp2.2\CsharpTreenia.csprojAssemblyReference.cache
+C:\Users\tmthw\Desktop\Bootcamp\WebGit\BC\CsharpTreenia\CsharpTreenia\obj\Debug\netcoreapp2.2\CsharpTreenia.csproj.CoreCompileInputs.cache
+C:\Users\tmthw\Desktop\Bootcamp\WebGit\BC\CsharpTreenia\CsharpTreenia\obj\Debug\netcoreapp2.2\CsharpTreenia.AssemblyInfoInputs.cache
+C:\Users\tmthw\Desktop\Bootcamp\WebGit\BC\CsharpTreenia\CsharpTreenia\obj\Debug\netcoreapp2.2\CsharpTreenia.AssemblyInfo.cs
+C:\Users\tmthw\Desktop\Bootcamp\WebGit\BC\CsharpTreenia\CsharpTreenia\obj\Debug\netcoreapp2.2\CsharpTreenia.dll
+C:\Users\tmthw\Desktop\Bootcamp\WebGit\BC\CsharpTreenia\CsharpTreenia\obj\Debug\netcoreapp2.2\CsharpTreenia.pdb

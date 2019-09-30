@@ -6,7 +6,9 @@ namespace CsharpTreenia
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Console.WriteLine("Hei, mikä on nimesi?");
+            String nimi = Console.ReadLine();
+            Console.WriteLine("Hei, " + nimi " !");
         }
     }
 }
