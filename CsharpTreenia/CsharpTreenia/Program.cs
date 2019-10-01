@@ -22,7 +22,14 @@ namespace CsharpTreenia
         static void Main(string[] args)
         {
             Peli.Aloitus();
-            Peli.Tehtävä6();
+            Peli.Tehtävä7();
+            Console.WriteLine("Haluatko testata toisen tehtävän? Paina 1=Kyllä tai 2=Ei.");
+            String jatkuuko = Console.ReadLine();
+            int j = int.Parse(jatkuuko);
+            if (j==1)
+            {
+                Peli.Tehtävä7();
+            }
             Peli.Lopetus();
         }
     }
@@ -148,6 +155,37 @@ namespace CsharpTreenia
             int numero = Noppa3();
             Console.WriteLine("Sait numeron: " + numero);
         }
+        public static void Tehtävä7()
+        {
+            Console.WriteLine("\n\n Tässä ohjelmassa on kuusi erilaista toimintoa tai tehtävää. Valitse numero 1-6 ja aloitetaan!");
 
+            string syöte = Console.ReadLine();
+            int tehtNro = int.Parse(syöte);
+
+            switch (tehtNro)
+            {
+                case 1:
+                    Peli.Tehtävä();
+                    break;
+                case 2:
+                    Peli.Tehtävä2();
+                    break;
+                case 3:
+                    Peli.Tehtävä3();
+                    break;
+                case 4:
+                    Peli.Tehtävä4();
+                    break;
+                case 5:
+                    Peli.Tehtävä5();
+                    break;
+                case 6:
+                    Peli.Tehtävä6();
+                    break;
+                default:
+                    Console.WriteLine("Uups, kone ei tunnistanut numeroa.");
+                    break;
+            }
+        }
     }
 }
