@@ -1,10 +1,12 @@
 ﻿using System;
-            /* Tehdään peli, joka kehittyy vaiheittain:
-             * 1) Lisätään ajanotto olemassa olevaan harjoitukseen
-             * 2) Muokataan tehtävää ja lisätään vastaukselle pituusehto.
-             * 3) Tarkistus, onko pituusehto täyttynyt.
-             * 4) Selkiytetään koodia ja järjestellään luokkia
-            */
+/* Tehdään peli, joka kehittyy vaiheittain:
+ * 1) Lisätään ajanotto olemassa olevaan harjoitukseen
+ * 2) Muokataan tehtävää ja lisätään vastaukselle pituusehto.
+ * 3) Tarkistus, onko pituusehto täyttynyt.
+ * 4) Selkiytetään koodia ja järjestellään luokkia
+ * 5) Luodaan lisää osia, että saadaan koodiin lisää sisältöä: Aloitus
+ * 6) Ohjauslauseharjoituksia Tehtävissä 1 ja 2.
+*/
 namespace CsharpTreenia
 {
     class Program
@@ -12,7 +14,8 @@ namespace CsharpTreenia
         static void Main(string[] args)
         {
             Peli.Aloitus();
-            Peli.Tehtävä();
+            Peli.Tehtävä2();
+            Peli.Lopetus();
         }
     }
     public static class Peli
@@ -46,6 +49,37 @@ namespace CsharpTreenia
             {
                 Console.WriteLine("Vastaus oli liian lyhyt.");
             }
+        }
+        public static void Tehtävä2()
+        {
+            // switch...case
+            Console.WriteLine("Kokeillaan seuraavaksi, onko sinulla onnea. Heitä noppaa painamalla jotain näppäintä.");
+            Console.ReadKey();
+            Random Noppa = new Random();
+            int arpa = Noppa.Next(1, 7);
+
+            switch(arpa)
+            {
+                case 1:
+                    Console.WriteLine("Arpaonni ei suosinut tällä kertaa. Sait huonoimman mahdollisen: 1");
+                    break;
+                case 2:
+                    Console.WriteLine("Sait numeron 2.");
+                    break;
+                case 3:
+                    Console.WriteLine("Sait numeron 3.");
+                    break;
+                case 6:
+                    Console.WriteLine("Onni suosii sinua: sait numeron 6.");
+                    break;
+                default:
+                    Console.WriteLine("Onnea! Sait numeron " + arpa + "!");
+                    break;
+            }
+        }
+        public static void Lopetus()
+        {
+            Console.Write("Hauskaa oli; on aika siirtyä eteenpäin ja kokeilla windows form -pohjaa");
         }
     }
 }
