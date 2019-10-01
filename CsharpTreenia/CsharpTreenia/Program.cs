@@ -5,7 +5,10 @@
  * 3) Tarkistus, onko pituusehto täyttynyt.
  * 4) Selkiytetään koodia ja järjestellään luokkia
  * 5) Luodaan lisää osia, että saadaan koodiin lisää sisältöä: Aloitus
- * 6) Ohjauslauseharjoituksia Tehtävissä 1 ja 2.
+ * 6) Ohjauslauseharjoituksia Tehtävissä 1-3:
+ *      1) if...else
+ *      2) switch...case
+ *      3) do..while
 */
 namespace CsharpTreenia
 {
@@ -14,7 +17,7 @@ namespace CsharpTreenia
         static void Main(string[] args)
         {
             Peli.Aloitus();
-            Peli.Tehtävä2();
+            Peli.Tehtävä3();
             Peli.Lopetus();
         }
     }
@@ -76,6 +79,23 @@ namespace CsharpTreenia
                     Console.WriteLine("Onnea! Sait numeron " + arpa + "!");
                     break;
             }
+        }
+        public static void Tehtävä3()
+        {
+            // do...while
+            Console.WriteLine("Heitä noppaa, kunnes saat kuutosen.");
+                Console.ReadKey();
+            int arpa2 = 0;
+            do
+            {
+                Random Noppa2 = new Random();
+                arpa2 = Noppa2.Next(1, 7);
+                if (arpa2 < 6)
+                {
+                Console.WriteLine("Sait: " + arpa2 + ". Heitetäänpä uudestaan!");
+                }
+            } while (arpa2 != 6);
+            Console.WriteLine("Onnea! Sait numeron 6");
         }
         public static void Lopetus()
         {
