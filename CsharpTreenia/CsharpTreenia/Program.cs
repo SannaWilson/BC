@@ -11,11 +11,24 @@ namespace CsharpTreenia
     {
         static void Main(string[] args)
         {
+            Peli.Aloitus();
             Peli.Tehtävä();
         }
     }
     public static class Peli
     {
+        public static void Aloitus()
+        {
+            Console.ForegroundColor = ConsoleColor.DarkCyan;
+            Console.WriteLine("   XXXX   ");
+            Console.WriteLine("  X    X     / /            #                               #   # #");
+            Console.WriteLine(" X         xxxxxx         #####                             ");
+            Console.WriteLine(" X          / /     ____    #   # ###  ####    ####  # ##   #   ###");
+            Console.WriteLine(" X        xxxxxx   /___/    #   ##    #____#  #____# ##  #  #  #   #");
+            Console.WriteLine("  X    X   / /              #   #     #       #      #   #  #  #   #");
+            Console.WriteLine("   XXXX                      #  #      ####    ####  #   #  #   ### # \n\n");
+            Console.ResetColor();
+        }
         public static void Tehtävä()
         {
             Console.WriteLine("Kirjoita vähintään 10 merkin pätkä.");
