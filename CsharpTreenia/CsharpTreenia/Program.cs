@@ -1,14 +1,19 @@
 ﻿using System;
+using System.Linq;
 /* Tehdään peli, joka kehittyy vaiheittain:
- * 1) Lisätään ajanotto olemassa olevaan harjoitukseen
- * 2) Muokataan tehtävää ja lisätään vastaukselle pituusehto.
- * 3) Tarkistus, onko pituusehto täyttynyt.
- * 4) Selkiytetään koodia ja järjestellään luokkia
- * 5) Luodaan lisää osia, että saadaan koodiin lisää sisältöä: Aloitus
- * 6) Ohjauslauseharjoituksia Tehtävissä 1-3:
- *      1) if...else
- *      2) switch...case
- *      3) do..while
+* 1) Lisätään ajanotto olemassa olevaan harjoitukseen
+* 2) Muokataan tehtävää ja lisätään vastaukselle pituusehto.
+* 3) Tarkistus, onko pituusehto täyttynyt.
+* 4) Selkiytetään koodia ja järjestellään luokkia
+* 5) Luodaan lisää osia, että saadaan koodiin lisää sisältöä: Aloitus
+* 6) Ohjauslauseharjoituksia Tehtävissä 1-3:
+*      1) if...else
+*      2) switch...case
+*      3) do..while
+*      4) foreach...in
+*      5) continue
+*      6) goto
+*      7) return
 */
 namespace CsharpTreenia
 {
@@ -17,7 +22,7 @@ namespace CsharpTreenia
         static void Main(string[] args)
         {
             Peli.Aloitus();
-            Peli.Tehtävä3();
+            Peli.Tehtävä6();
             Peli.Lopetus();
         }
     }
@@ -34,6 +39,11 @@ namespace CsharpTreenia
             Console.WriteLine("  X    X   / /              #   #     #       #      #   #  #  #   #");
             Console.WriteLine("   XXXX                      #  #      ####    ####  #   #  #   ### # \n\n");
             Console.ResetColor();
+        }
+        public static void Lopetus()
+        {
+            Console.Write("Hauskaa oli; paina mitä tahansa näppäintä.");
+            Console.ReadKey();
         }
         public static void Tehtävä()
         {
@@ -97,9 +107,47 @@ namespace CsharpTreenia
             } while (arpa2 != 6);
             Console.WriteLine("Onnea! Sait numeron 6");
         }
-        public static void Lopetus()
+        public static void Tehtävä4()
         {
-            Console.Write("Hauskaa oli; on aika siirtyä eteenpäin ja kokeilla windows form -pohjaa");
+            string[] tiimi = { "Sanna", "Jennina", "Anne", "Kirsi", "Cathy" };
+
+            foreach (string jäsen in tiimi)
+            {
+                Console.WriteLine("Hei, " + jäsen + "!");
+            }
         }
+        public static void Tehtävä5()
+        {
+            string[] tiimi = { "Sanna", "Jennina", "Anne", "Kirsi", "Cathy" };
+            Console.WriteLine("Hae tiimin jäseniä nimellä:");
+            string haku = Console.ReadLine();
+
+            if (tiimi.Contains(haku))
+            {
+                goto Osuma;
+            }
+            Console.Write("Nimeä ei löytynyt listasta.");
+            goto Lopetus;
+
+        Osuma:
+            Console.WriteLine(haku + " löytyi listasta.");
+
+            Lopetus:
+            Console.WriteLine("Jatketaan tästä...");
+        }
+        static int Noppa3()
+        {
+            Random Noppa3 = new Random();
+            int arpa = Noppa3.Next(1, 7);
+            return arpa;
+        }
+        public static void Tehtävä6()
+        {
+            Console.WriteLine("Paina mitä tahansa näppäintä heittääksesi taas arpaa.");
+            Console.ReadKey();
+            int numero = Noppa3();
+            Console.WriteLine("Sait numeron: " + numero);
+        }
+
     }
 }
