@@ -15,11 +15,10 @@ namespace MyDB.Models
         {
         }
 
+        public virtual DbSet<Atc> Atc { get; set; }
+        public virtual DbSet<Laakeaine> Laakeaine { get; set; }
+        public virtual DbSet<Laakemuoto> Laakemuoto { get; set; }
         public virtual DbSet<Pakkaus0> Pakkaus0 { get; set; }
-
-        // Unable to generate entity type for table 'dbo.laakemuoto'. Please see the warning messages.
-        // Unable to generate entity type for table 'dbo.laakeaine'. Please see the warning messages.
-        // Unable to generate entity type for table 'dbo.atc'. Please see the warning messages.
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -32,6 +31,82 @@ namespace MyDB.Models
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<Atc>(entity =>
+            {
+                entity.HasKey(e => e.Atctun);
+
+                entity.ToTable("atc");
+
+                entity.Property(e => e.Atctun)
+                    .HasColumnName("ATCTUN")
+                    .ValueGeneratedNever();
+
+                entity.Property(e => e.Atckoodi)
+                    .IsRequired()
+                    .HasColumnName("ATCKOODI")
+                    .HasMaxLength(50);
+
+                entity.Property(e => e.Ddd)
+                    .HasColumnName("DDD")
+                    .HasMaxLength(50);
+
+                entity.Property(e => e.Dddyksikko)
+                    .HasColumnName("DDDYKSIKKO")
+                    .HasMaxLength(50);
+
+                entity.Property(e => e.Seliter)
+                    .IsRequired()
+                    .HasColumnName("SELITER")
+                    .HasMaxLength(100);
+
+                entity.Property(e => e.Selites)
+                    .IsRequired()
+                    .HasColumnName("SELITES")
+                    .HasMaxLength(100);
+            });
+
+            modelBuilder.Entity<Laakeaine>(entity =>
+            {
+                entity.HasKey(e => new { e.Pakkausnro, e.Ainetun });
+
+                entity.ToTable("laakeaine");
+
+                entity.Property(e => e.Pakkausnro).HasColumnName("PAKKAUSNRO");
+
+                entity.Property(e => e.Ainetun).HasColumnName("AINETUN");
+
+                entity.Property(e => e.Ainenimi)
+                    .IsRequired()
+                    .HasColumnName("AINENIMI")
+                    .HasMaxLength(100);
+            });
+
+            modelBuilder.Entity<Laakemuoto>(entity =>
+            {
+                entity.HasKey(e => e.Laakemuototun);
+
+                entity.ToTable("laakemuoto");
+
+                entity.Property(e => e.Laakemuototun)
+                    .HasColumnName("LAAKEMUOTOTUN")
+                    .ValueGeneratedNever();
+
+                entity.Property(e => e.Laakemuotonimi)
+                    .IsRequired()
+                    .HasColumnName("LAAKEMUOTONIMI")
+                    .HasMaxLength(100);
+
+                entity.Property(e => e.Laakemuotonimie)
+                    .IsRequired()
+                    .HasColumnName("LAAKEMUOTONIMIE")
+                    .HasMaxLength(100);
+
+                entity.Property(e => e.Laakemuotonimir)
+                    .IsRequired()
+                    .HasColumnName("LAAKEMUOTONIMIR")
+                    .HasMaxLength(100);
+            });
+
             modelBuilder.Entity<Pakkaus0>(entity =>
             {
                 entity.HasKey(e => e.Pakkausnro);
