@@ -19,7 +19,7 @@ namespace SQL_BCharj.Controllers
             List<Customers> kaikki = malli.Customers.ToList();
             return kaikki;
         }
-
+       
         [HttpGet]
         [Route("{id}")]
         public Customers NäytäYksi(string id)
