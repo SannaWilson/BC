@@ -28,7 +28,21 @@ namespace SQL_BCharj.Controllers
 
         }
         public IActionResult Index()
-        { 
+        {
+
+           /* List<Customers> suomalaiset = (from c in context.Customers
+                                           where c.Country == "Finland"
+                                           select c).ToList();
+            foreach (Customer asiakas in suomalaiset)
+            {
+                int lkm = asiakas.Orders.Count(9);
+                foreach (Orders tilaus in asiakas.Orders)
+                {
+
+                }
+            }
+            */
+
             // Asiakkaiden lukumäärä
             NorthwindContext context = new NorthwindContext();
             int lkm = context.Customers.Count();
