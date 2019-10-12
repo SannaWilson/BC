@@ -19,7 +19,7 @@ namespace MyDB.Models
         public string Laakenimi { get; set; }
         public string Vahvuus { get; set; }
         public string Laakemuotonimi { get; set; }
-        public int Laakemuototun { get; set; }
+        public short Laakemuototun { get; set; }
         public string Haltija { get; set; }
         public string Hum { get; set; }
         public string Vet { get; set; }
@@ -44,5 +44,8 @@ namespace MyDB.Models
         public string Substituutioryhma { get; set; }
         public bool Kaupan { get; set; }
         public string EdellinenLaakenimi { get; set; }
+
+        public Atc AstiatunNavigation { get; set; }
+        public Laakemuoto LaakemuototunNavigation { get; set; }
     }
 }

@@ -11,5 +11,17 @@ namespace SQL_BCharj.Logic
         {
             return a + b;
         }
+        public int Erotus(int a, int b)
+        {
+            return a - b;
+        }
+        public int Tulo(int a, int b)
+        {
+            return a * b;
+        }
+        public int Jakolasku(int a, int b)
+        {
+            return a / b;
+        }
     }
 }

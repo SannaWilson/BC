@@ -63,6 +63,12 @@ namespace MyDB.Models
                     .IsRequired()
                     .HasColumnName("SELITES")
                     .HasMaxLength(100);
+
+                entity.HasOne(d => d.AtctunNavigation)
+                    .WithOne(p => p.InverseAtctunNavigation)
+                    .HasForeignKey<Atc>(d => d.Atctun)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_atc_atc");
             });
 
             modelBuilder.Entity<Laakeaine>(entity =>
@@ -254,6 +260,17 @@ namespace MyDB.Models
                 entity.Property(e => e.Yksikko)
                     .HasColumnName("YKSIKKO")
                     .HasMaxLength(50);
+
+                entity.HasOne(d => d.AstiatunNavigation)
+                    .WithMany(p => p.Pakkaus0)
+                    .HasForeignKey(d => d.Astiatun)
+                    .HasConstraintName("FK_pakkaus_0_atc");
+
+                entity.HasOne(d => d.LaakemuototunNavigation)
+                    .WithMany(p => p.Pakkaus0)
+                    .HasForeignKey(d => d.Laakemuototun)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_pakkaus_0_laakemuoto");
             });
         }
     }

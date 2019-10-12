@@ -12,6 +12,16 @@ namespace MyDB.Controllers
     {
         public IActionResult Index()
         {
+            /*NorthwindContext context = new NorthwindContext();
+            int lkm = context.Customers.Count();
+
+            ViewBag.AsiakkaidenLkm = lkm;*/
+
+            ImportContext malli = new ImportContext();
+            int lkm = malli.Pakkaus0.Count();
+
+            ViewBag.PakkaustenLkm = lkm;
+
             return View();
         }
 
