@@ -20,19 +20,19 @@ namespace MyDB.Controllers
             return kaikki;
         }
 
-  /*      [HttpGet]
+      [HttpGet]
         [Route("{id}")]
-        public Pakkaus0 ListaaYksi(string id)
+        public Pakkaus0 ListaaYksi(int id)
         {
             ImportContext konteksti = new ImportContext();
-            Pakkaus0 pakkaus = (from p in konteksti.Pakkaus0
-                             where p.Pakkausnro == id
-                             select p).FirstOrDefault();
+            Pakkaus0 pakkaus = (from e in konteksti.Pakkaus0
+                             where e.Pakkausnro == id
+                             select e).FirstOrDefault();
 
             return pakkaus;
         }
 
-        */
+ 
     /* private readonly ImportContext _context;
 
  public PakkausController(ImportContext context)
