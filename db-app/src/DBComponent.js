@@ -1,13 +1,25 @@
-// JavaScript source code
 import React from 'react';
+import Pagination from "react-js-pagination";
+
 
 class DBComponent extends React.Component {
     constructor(props) {
         console.log("DBComponent.constructor()");
-
         super(props);
-        this.state = { pakkaus: [] };
+        this.state = {
+            kaikki: [],
+            activePage: 1,
+            itemsCountPerPage: 20
+        };
+        this.handlePageChange = this.handlePageChange.bind(this);
     }
+
+    handlePageChange(pageNumber) {
+        console.log(`active page is ${pageNumber}`);
+        this.setState({ activePage: pageNumber });
+    }
+
+   
 
     componentDidMount() {
         console.log("DBComponent.componentDidMount()");
@@ -18,45 +30,60 @@ class DBComponent extends React.Component {
             .then(json => {
                 console.log("pakkaus0-data ladattu.");
 
-                reactKomponentti.setState({ pakkaus: json });
-
+                reactKomponentti.setState({ kaikki: json });
             });
 
         console.log("Fetch-kutsu tehty.")
-
     }
 
     render() {
-        console.log("Oma.render()");
+        console.log("DBComponent.render()");
 
-        let lkm = this.state.pakkaus.length;
+        let lkm = this.state.kaikki.length;
         var taulukko = [];
         for (let index = 0; index < lkm; index++) {
-            let pakkaus = this.state.pakkaus[index];
+            let tuote = this.state.kaikki[index];
+
+            let lopetusIndeksi = this.state.activePage + this.state.itemsCountPerPage;
+            let aloitusIndeksi = lopetusIndeksi - this.state.itemsCountPerPage;
+
+            if (index < aloitusIndeksi) {
+                continue;
+            }
+            if (index > lopetusIndeksi) {
+                continue;
+            }
 
             taulukko.push(<tr>
-                <td>{pakkaus.pakkausnro}</td>
-                <td>{pakkaus.kauppaantulopvm}</td>
-                <td>{pakkaus.laakenimi}</td>
+                <td>{tuote.laakenimi}</td>
+                <td>{tuote.atckoodi}</td>
+                <td>{tuote.kaupan}</td>
             </tr>);
         }
 
         return <div>
-            <table>
+
+            <Pagination
+                activePage={this.state.activePage}
+                itemsCountPerPage={20}
+                totalItemsCount={lkm}
+                pageRangeDisplayed={0}
+                onChange={this.handlePageChange} />
+
+            <table className="table table sm">
                 <thead>
                     <tr>
-                        <th>Pakkausnro</th>
-                        <th>MAdate</th>
-                        <th>Nimi</th>
+                        <th>Brändi</th>
+                        <th>ATC-koodi</th>
+                        <th>hum</th>
                     </tr>
                 </thead>
                 <tbody>
                     {taulukko}
                 </tbody>
-
             </table>
 
-        </div>;
+        </div>
     }
 }
 export default DBComponent;

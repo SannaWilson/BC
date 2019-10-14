@@ -19,7 +19,9 @@ namespace MyDB.Controllers
             List<Pakkaus0> kaikki = konteksti.Pakkaus0.ToList();
             return kaikki;
         }
+        //miten tehdään filtteröinti valmiiksi.
 
+        /*
       [HttpGet]
         [Route("{id}")]
         public Pakkaus0 ListaaYksi(int id)
@@ -33,7 +35,7 @@ namespace MyDB.Controllers
         }
 
  
-    /* private readonly ImportContext _context;
+     private readonly ImportContext _context;
 
  public PakkausController(ImportContext context)
  {
@@ -156,5 +158,5 @@ public IEnumerable<Pakkaus0> GetPakkaus0()
      return _context.Pakkaus0.Any(e => e.Pakkausnro == id);
  }
     */
-}
+    }
 }
